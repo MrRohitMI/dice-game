@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+          margin: auto;
+        text-align: center;
+        font-size: 40px;
+        }
+        #winner{
+            margin-bottom: 80px;
+        }
+        #heading{
+            font-size: 60px;
+            margin-bottom: 70px; 
+        }
+        button{
+            width:150px;
+            height: 60px;
+            margin-top: 70px;
+            border-radius: 10px;
+            background-color: blueviolet;
+
+        }
+    </style>
+</head>
+<body>
+ <div id="heading">Throw Dice</div>
+ <div id="winner"></div>
+   <span>Member 1 :</span><div id="member-1"></div>
+    <span>Member 2 :</span><div id="member-2"></div>
+    <span>Member 3 :</span><div id="member-3"></div>
+    <button id="roll">ROLL THE DICE</button>
+</body>
+</html>
+<script>
+    document.querySelector("button").addEventListener("click",myFun)
+    function myFun(){
+        let member1 = document.querySelector('#member-1')
+        let member2 = document.querySelector('#member-2')
+        let member3 = document.querySelector('#member-3')
+        let winner = document.querySelector("#winner")
+
+
+        member1.innerText = Math.ceil(Math.random()*6,1)
+        member2.innerText = Math.ceil(Math.random()*6,1)
+        member3.innerText = Math.ceil(Math.random()*6,1)
+        let A = +member1.innerText;
+        let B = +member2.innerText;
+        let C = +member3.innerText;
+
+
+        if(A>B && A>C){
+          member1.style.color = "green";
+          if(B>C){
+              member2.style.color = "yellow";
+              member3.style.color = "red";
+          }
+          else if(B<C){
+            member2.style.color = "red";
+              member3.style.color = "yellow";
+          }
+          else{
+            member2.style.color = "red";
+              member3.style.color = "red";
+          }
+          winner.innerText = "Member 1 is the Winner"
+      }
+      else if(A==B && A>C){
+        member1.style.color = "blue"
+        member2.style.color = "blue"
+        member3.style.color = "red"
+        winner.innerText = "Draw"
+      }
+      else if(A==C && A>B){
+        member1.style.color = "blue"
+        member2.style.color = "red"
+        member3.style.color = "blue"
+        winner.innerText = "Draw"
+      }
+
+        if(B>A && B>C){
+          member2.style.color = "green";
+          winner.innerText = "Member 2 is the Winner"
+          if(A>C){
+              member1.style.color = "yellow";
+              member3.style.color = "red";
+          }
+          else if(A<C){
+            member1.style.color = "red";
+              member3.style.color = "yellow";
+          }
+          else{
+            member1.style.color = "red";
+              member3.style.color = "red";
+          }
+      }
+      else if(B==A && B>C){
+        member1.style.color = "blue"
+        member2.style.color = "blue"
+        member3.style.color = "red"
+        winner.innerText = "Draw"
+      }
+      else if(B==C && B>A){
+        member1.style.color = "red"
+        member2.style.color = "blue"
+        member3.style.color = "blue"
+        winner.innerText = "Draw"
+      }
+    
+
+        if(C>B && C>A){
+            winner.innerText = "Member 3 is the Winner"
+          member3.style.color = "green";
+          if(B>A){
+              member2.style.color = "yellow";
+              member1.style.color = "red";
+          }
+          else if(B<A){
+            member2.style.color = "red";
+              member1.style.color = "yellow";
+          }
+          else{
+            member2.style.color = "red";
+              member1.style.color = "red";
+          }
+      }
+      else if(C==B && C>A){
+        member1.style.color = "red"
+        member2.style.color = "blue"
+        member3.style.color = "blue"
+        winner.innerText = "Draw"
+      }
+      else if(A==C && A>B){
+        member1.style.color = "blue"
+        member2.style.color = "red"
+        member3.style.color = "blue"
+        winner.innerText = "Draw"
+      }
+      
+      if(A==B && B==C){ 
+          winner.innerText = "Draw"
+            member1.style.color = "blue"
+          member2.style.color = "blue"
+          member3.style.color = "blue"
+        }
+  
+   
+   
+   
+    }
+</script>
